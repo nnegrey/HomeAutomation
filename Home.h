@@ -1,8 +1,8 @@
-#define TEMBOO_ACCOUNT "atkhobo"
-#define TEMBOO_APP_KEY_NAME "myFirstApp"
-#define TEMBOO_APP_KEY "d05a2ebbb6ae4aaf9cc8ee940fb652ab"
-#define WIFI_SSID "BloodGulch"
-#define WPA_PASSWORD "helloworld"
+#define TEMBOO_ACCOUNT "******"
+#define TEMBOO_APP_KEY_NAME "******"
+#define TEMBOO_APP_KEY "******"
+#define WIFI_SSID "******"
+#define WPA_PASSWORD "******"
 #define DIGITAL_OUT_PIN    2
 #define DIGITAL_IN_PIN     A4
 #define PWM_PIN            3
