@@ -15,18 +15,18 @@ int calls = 0;
 
 void setup() {
   Serial.begin(9600);
-  int wifiStatus = WL_IDLE_STATUS;
-  
-  while(wifiStatus != WL_CONNECTED) {
-    Serial.print("WiFi:");
-    wifiStatus = WiFi.begin(WIFI_SSID, WPA_PASSWORD);
-
-    if (wifiStatus == WL_CONNECTED)
-      Serial.println("OK");
-    else
-      Serial.println("FAIL");
-    delay(5000);
-  }
+//  int wifiStatus = WL_IDLE_STATUS;
+//  
+//  while(wifiStatus != WL_CONNECTED) {
+//    Serial.print("WiFi:");
+//    wifiStatus = WiFi.begin(WIFI_SSID, WPA_PASSWORD);
+//
+//    if (wifiStatus == WL_CONNECTED)
+//      Serial.println("OK");
+//    else
+//      Serial.println("FAIL");
+//    delay(1000);
+//  }
   
   ble_set_name("Noah Home");
   ble_begin();
@@ -37,6 +37,8 @@ void setup() {
   digitalWrite(DIGITAL_IN_PIN, HIGH);
   //digitalWrite(DIGITAL_IN_PIN, LOW);
   
+//  pinMode(DESELECT_SD, OUTPUT);
+//  digitalWrite(DESELECT_SD, HIGH);
   myservo.attach(SERVO_PIN);
   myservo.write(0);
   Serial.println("Setup complete.\n");
@@ -106,7 +108,6 @@ void loop()
   }
   
   if (!ble_connected()) {
-    myservo.write(0);
     analog_enabled = false;
     digitalWrite(DIGITAL_OUT_PIN, LOW);
     
@@ -115,7 +116,9 @@ void loop()
     
       if (digitalRead(DIGITAL_IN_PIN) == HIGH) {
         if (!ble_connected()) {
-          runSendEmail(old_state);
+          Serial.println("Send Email Test.\n");
+          delay(100);
+//          runSendEmail(old_state);
           calls++;
         }
       }
